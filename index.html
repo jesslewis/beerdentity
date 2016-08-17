@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>#Beerdentity</title>
+		<link rel="stylesheet" href="css/normalize.css" media="screen" charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css" />
+		<meta name="description" content="">
+      	<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+
+		<div class="container-fluid home">
+
+			<div id="initSignIn">
+				
+			</div>
+
+		</div>
+
+			<div id="beerdentity">
+
+			</div>
+
+			<div id="pastBeers">
+
+			</div>
+
+		<!-- </div> -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+
+		<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyC_9DIoSOiJSNi84fpEmSA5FZuWvdLZeDw",
+		    authDomain: "beerdenity.firebaseapp.com",
+		    databaseURL: "https://beerdenity.firebaseio.com",
+		    storageBucket: "beerdenity.appspot.com",
+		  };
+		  firebase.initializeApp(config);
+		</script>
+
+        <script src="js/index.js"></script>
+
+	    <script id="login-template" type="text/x-handlebars-template">
+		    {{#if loggedIn}}
+		    <!-- <div id="initialSignedIn"> -->
+		    	<nav class="navbar navbar-inverse navbar-fixed-top">
+		  			<div class="container-fluid">
+		    			<div class="navbar-header">
+		        			<h2>#Beerdentity</h2>
+		    			</div>
+		    			<div>
+		  					<p class="navbar-text navbar-right username">Signed in as {{user.email}}</p>
+		  				</div>
+		  			</div>
+				</nav>
+
+				<div class="container">
+					<div class="row topContent">
+						<div class="text-center col-md-12 addBeers box">
+							<h2 class="text-center">What did you just drink?</h2>
+
+							<div id="beerInput" class="form-inline frm">
+								<div class="form-group">
+								    <label for="brewery">Brewery</label>
+									<input id="brewery" name="brewery" type="text" placeholder="brewery">
+								</div>
+								<div class="form-group">
+								    <label for="beer">Beer</label>
+									<input id="beer" name="beer" type="text" placeholder="beer">
+								</div>
+							  	<div class="form-group">
+							    	<label for="beerType">Type</label>
+								  	<select id="beerType" class="form-control show-tick">
+									    <option value="Kolsch" selected="selected">Kolsch</option>
+									    <option value="Pale Ale">Pale Ale</option>
+									    <option value="Lager">Lager</option>
+									    <option value="Amber Ale">Amber Ale</option>
+									    <option value="Browns">Browns</option>
+									    <option value="Pilsner">Pilsner</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="rating">Rating</label>
+									<select id="rating" class="form-control">
+										<option value="no rating" selected="selected">No Rating</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<input id="confirm" type="submit" value="Confirm" />
+	          						<input id="signOut" type="submit" value="Sign Out" />
+          						</div>
+							</div>
+
+						</div>	
+					</div>
+				</div>
+		    <!-- </div> -->
+		    {{else}}
+		    <!-- <div id="initSignIn"> -->
+				<div class="container">
+					<div class="row signIn">
+						<div class="col-md-2"></div>
+						<div class="login col-md-8">
+							<div class="logo">
+								<h2>#Beerdentity</h2>
+								<p>What Type of Beer Drinker Are you?</p>
+							</div>
+							<input name="email" type="email" placeholder="email@email.com">
+							<input name="password" type="password" placeholder="password">
+							<input class="btn btn-default" id="signUp" type="submit" value="Sign Up">
+							<input class="btn btn-default" id="signIn" type="submit" value="Sign In">
+							</div>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+				</div>
+			<!-- </div> -->
+			{{/if}}
+		</script>
+
+		<script id="beerInput-template" type="text/x-handlebars-template">
+
+			{{#if loggedIn}}
+				{{#each beers}}
+		        	<div class="container">
+		        		<div class="row box">
+		        			<div class="col-md-12">
+		        				<h2>Recent Brewski</h2>
+			        			<div class="beerInput" data-id="{{@key}}">
+				            		<h4><strong>Brewery:</strong> {{brewery}}</h4>
+				            		<h4><strong>Beer:</strong> {{beer}}</h4>
+				            		<h4><strong>Beer Type:</strong> {{beerType}}</h4>
+				            		<h4><strong>Your Rating:</strong> {{rating}}</h4>
+			          			</div>
+		          			</div>
+		        		</div>
+		        	</div>	
+	        	{{/each}}
+        	{{/if}}
+
+		</script>
+
+		<script id="beerdentity-template" type="text/x-handlebars-template">
+			{{#if loggedIn}}
+				<div class="container">
+		        	<div class="row box">
+		        		<div class="col-md-12">
+							<h2>Your Current Beerdentity is:</h2>
+							<h4>{{frequentBeer}}</h4>
+						</div>
+					</div>
+				</div>
+			{{/if}}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,109 @@
+body {
+	color: #fff;
+}
+
+.home {
+	background: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url(../images/beer-cheers.jpeg);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    background-attachment: fixed;
+}
+
+.container {
+	max-width: 900px;
+	margin: auto;
+}
+
+.signIn {
+	margin: 100px;
+	background-color: rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow: 0px 0.1px 0.5px 0.5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0.1px 0.5px 0.5px rgba(0,0,0,0.5);
+	box-shadow: 0px 0.1px 0.5px 0.5px rgba(0,0,0,0.5);
+}
+
+.login {
+	text-align: center;
+}
+
+.logo {/*
+	height: auto;
+	margin: 0 auto;*/
+	color: #000;
+}
+
+#un, input[type="email"], input[type="password"] {
+	display: block;
+	padding: 15px;
+	width: 300px;
+	font-size: 16px;
+	margin: 20px auto;
+	color: #000;
+}
+
+input[type="submit"] {
+	padding: 15px;
+	background-color: #444;
+	border-radius: 5px;
+	display: inline-block;
+	margin: 5px 5px 20px 5px;
+	border: none;
+	color: #fff;
+	font-size: 16px;
+}
+
+input[type="submit"]:focus { 
+	outline: none; 
+}
+
+.username {
+	padding: 15px 20px 0 0;
+}
+
+/*#signUp, #signIn {
+	margin: 5px 5px 20px 5px;
+}*/
+
+.box {
+	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.7);
+	-webkit-box-shadow: 0px 0.1px 0.5px 0.5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0.1px 0.5px 0.5px rgba(0,0,0,0.5);
+	box-shadow: 0px 0.1px 0.5px 0.5px rgba(0,0,0,0.5);
+}
+div#pastbeers div.container:last-child {
+	margin-bottom: 40px;
+}
+.frm {
+	padding-top: 10px;
+}
+.form-group {
+	margin-right: 10px;
+}
+.form-group:last-child {
+	margin-top: 20px;
+}
+
+h2 {
+	margin-bottom: 20px;
+}
+#beer, 
+#brewery {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.topContent {
+	margin-top: 120px;
+}
+.bottomContent {
+	margin-top: 30px;
+}
